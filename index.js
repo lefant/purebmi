@@ -905,15 +905,15 @@ var render = function (_51) {
                 };
             };
             var result = Thermite_Html_Elements["p'"]([ Thermite_Html.text(" Body mass index: "), Thermite_Html.text(Prelude.show(Prelude.showNumber)($$Math.round(bmi(_52.height)(_52.mass)))) ]);
-            return Thermite_Html_Elements.div([ Thermite_Html_Attributes.className("container") ])([ Thermite_Html_Elements.div([ Thermite_Html_Attributes.className("row") ])([ Thermite_Html_Elements.div([ Thermite_Html_Attributes.className("col-sm-3") ])([ Thermite_Html_Elements["div'"]([ textAndSlider("Height (in cm):")(function (st_1) {
+            return Thermite_Html_Elements.div([ Thermite_Html_Attributes.className("container") ])([ Thermite_Html_Elements.div([ Thermite_Html_Attributes.className("row") ])([ Thermite_Html_Elements.div([ Thermite_Html_Attributes.className("col-xs-12 col-sm-3 col-md-2 col-lg-2") ])([ Thermite_Html_Elements["div'"]([ textAndSlider("Height (in cm):")(function (st_1) {
                 return st_1.height;
             })(function (v) {
                 return new UpdateHeight(v);
-            })(10)(250), textAndSlider("Mass (in kg):")(function (st_1) {
+            })(130)(220), textAndSlider("Mass (in kg):")(function (st_1) {
                 return st_1.mass;
             })(function (v) {
                 return new UpdateMass(v);
-            })(1)(300), result ]) ]) ]) ]);
+            })(25)(150), result ]) ]) ]) ]);
         };
     };
 };
