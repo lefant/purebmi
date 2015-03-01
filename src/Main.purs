@@ -13,10 +13,19 @@ import qualified Thermite.Types as T
 
 data Action = Increment | Decrement | Input Number
 
-type State = { counter :: Number }
+type State = { counter :: Number
+             , mass :: Number
+             , height :: Number
+             }
 
 initialState :: State
-initialState = { counter: 0 }
+initialState = { counter: 0
+               , mass: 75
+               , height: 175
+               }
+
+bmi :: Number -> Number -> Number
+bmi mass height = mass / (height * height)
 
 foreign import getValue
   "function getValue(e) {\
@@ -60,9 +69,9 @@ render ctx s _ = T.div' [counter, textInput, slider, buttons]
       ]
 
 performAction :: T.PerformAction _ Action (T.Action _ State) 
-performAction _ Increment = T.modifyState \o -> { counter: o.counter + 1 }
-performAction _ Decrement = T.modifyState \o -> { counter: o.counter - 1 }
-performAction _ (Input s) = T.modifyState \o -> { counter: s }
+performAction _ Increment = T.modifyState \o -> o { counter = o.counter + 1 }
+performAction _ Decrement = T.modifyState \o -> o { counter = o.counter - 1 }
+performAction _ (Input s) = T.modifyState \o -> o { counter = s }
 
 spec :: T.Spec _ State _ Action
 spec = T.simpleSpec initialState performAction render
