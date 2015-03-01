@@ -35,10 +35,17 @@ foreign import getValue
 
 render :: T.Render State _ Action
 render ctx st _ =
-  T.div'
-  [ textAndSlider "Height (in cm):" (\st -> st.height) (\v -> UpdateHeight v) 10 250
-  , textAndSlider "Mass (in kg):" (\st -> st.mass) (\v -> UpdateMass v) 1 300
-  , result
+  T.div [ A.className "container" ] [
+    T.div [ A.className "row" ]
+    [ T.div [ A.className "col-sm-3"
+            ]
+      [ T.div'
+        [ textAndSlider "Height (in cm):" (\st -> st.height) (\v -> UpdateHeight v) 10 250
+        , textAndSlider "Mass (in kg):" (\st -> st.mass) (\v -> UpdateMass v) 1 300
+        , result
+        ]
+      ]
+    ]
   ]
   where
   result :: T.Html _
