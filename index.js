@@ -833,30 +833,30 @@ var UpdateMass = (function () {
     };
     return UpdateMass;
 })();
-var performAction = function (_3) {
-    return function (_4) {
-        if (_4 instanceof UpdateHeight) {
+var performAction = function (_54) {
+    return function (_55) {
+        if (_55 instanceof UpdateHeight) {
             return Thermite_Action.modifyState(function (o) {
-                var _7 = {};
-                for (var _8 in o) {
-                    if (o.hasOwnProperty(_8)) {
-                        _7[_8] = o[_8];
+                var _144 = {};
+                for (var _145 in o) {
+                    if (o.hasOwnProperty(_145)) {
+                        _144[_145] = o[_145];
                     };
                 };
-                _7.height = _4.value0;
-                return _7;
+                _144.height = _55.value0;
+                return _144;
             });
         };
-        if (_4 instanceof UpdateMass) {
+        if (_55 instanceof UpdateMass) {
             return Thermite_Action.modifyState(function (o) {
-                var _10 = {};
-                for (var _11 in o) {
-                    if (o.hasOwnProperty(_11)) {
-                        _10[_11] = o[_11];
+                var _147 = {};
+                for (var _148 in o) {
+                    if (o.hasOwnProperty(_148)) {
+                        _147[_148] = o[_148];
                     };
                 };
-                _10.mass = _4.value0;
-                return _10;
+                _147.mass = _55.value0;
+                return _147;
             });
         };
         throw new Error("Failed pattern match");
@@ -872,12 +872,12 @@ var bmi = function (heightCm) {
         return mass / $$Math.pow(heightM)(2);
     };
 };
-var render = function (_0) {
-    return function (_1) {
-        return function (_2) {
+var render = function (_51) {
+    return function (_52) {
+        return function (_53) {
             var textInput = function (value) {
                 return function (updateAction) {
-                    return Thermite_Html_Elements.input([ Thermite_Html_Attributes.value(Prelude.show(Prelude.showNumber)(value(_1))), Thermite_Events.onChange(_0)(function (e) {
+                    return Thermite_Html_Elements.input([ Thermite_Html_Attributes.value(Prelude.show(Prelude.showNumber)(value(_52))), Thermite_Events.onChange(_51)(function (e) {
                         return updateAction(getValue(e));
                     }) ])([  ]);
                 };
@@ -886,7 +886,7 @@ var render = function (_0) {
                 return function (updateAction) {
                     return function (sMin) {
                         return function (sMax) {
-                            return Thermite_Html_Elements.input([ Thermite_Html_Attributes._type("range"), Thermite_Html_Attributes.value(Prelude.show(Prelude.showNumber)(value(_1))), Thermite_Html_Attributes.min(Prelude.show(Prelude.showNumber)(sMin)), Thermite_Html_Attributes.max(Prelude.show(Prelude.showNumber)(sMax)), Thermite_Events.onChange(_0)(function (e) {
+                            return Thermite_Html_Elements.input([ Thermite_Html_Attributes._type("range"), Thermite_Html_Attributes.value(Prelude.show(Prelude.showNumber)(value(_52))), Thermite_Html_Attributes.min(Prelude.show(Prelude.showNumber)(sMin)), Thermite_Html_Attributes.max(Prelude.show(Prelude.showNumber)(sMax)), Thermite_Events.onChange(_51)(function (e) {
                                 return updateAction(getValue(e));
                             }) ])([  ]);
                         };
@@ -904,7 +904,7 @@ var render = function (_0) {
                     };
                 };
             };
-            var result = Thermite_Html_Elements["p'"]([ Thermite_Html.text(" Body mass index: "), Thermite_Html.text(Prelude.show(Prelude.showNumber)($$Math.round(bmi(_1.height)(_1.mass)))) ]);
+            var result = Thermite_Html_Elements["p'"]([ Thermite_Html.text(" Body mass index: "), Thermite_Html.text(Prelude.show(Prelude.showNumber)($$Math.round(bmi(_52.height)(_52.mass)))) ]);
             return Thermite_Html_Elements.div([ Thermite_Html_Attributes.className("container") ])([ Thermite_Html_Elements.div([ Thermite_Html_Attributes.className("row") ])([ Thermite_Html_Elements.div([ Thermite_Html_Attributes.className("col-sm-3") ])([ Thermite_Html_Elements["div'"]([ textAndSlider("Height (in cm):")(function (st_1) {
                 return st_1.height;
             })(function (v) {
@@ -2951,27 +2951,27 @@ var simpleSpec = function (initialState) {
 var render = Thermite_Internal.renderImpl;
 var displayName = function (_49) {
     return function (_50) {
-        var _138 = {};
-        for (var _139 in _50) {
-            if (_50.hasOwnProperty(_139)) {
-                _138[_139] = _50[_139];
+        var _136 = {};
+        for (var _137 in _50) {
+            if (_50.hasOwnProperty(_137)) {
+                _136[_137] = _50[_137];
             };
         };
-        _138.displayName = new Data_Maybe.Just(_49);
-        return _138;
+        _136.displayName = new Data_Maybe.Just(_49);
+        return _136;
     };
 };
 var createClass = Thermite_Internal.createClassImpl(Thermite_Action.runAction)(Data_Maybe.maybe);
 var componentWillMount = function (_47) {
     return function (_48) {
-        var _142 = {};
-        for (var _143 in _48) {
-            if (_48.hasOwnProperty(_143)) {
-                _142[_143] = _48[_143];
+        var _140 = {};
+        for (var _141 in _48) {
+            if (_48.hasOwnProperty(_141)) {
+                _140[_141] = _48[_141];
             };
         };
-        _142.componentWillMount = new Data_Maybe.Just(_47);
-        return _142;
+        _140.componentWillMount = new Data_Maybe.Just(_47);
+        return _140;
     };
 };
 module.exports = {
