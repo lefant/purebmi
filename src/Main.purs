@@ -40,7 +40,7 @@ render ctx st _ =
        T.div [ A.className "col-xs-12 col-sm-3 col-md-2 col-lg-2" ] [
           T.div'
           [ textAndSlider "Height (in cm):" (\st -> st.height) (\v -> UpdateHeight v) 130 220
-          , textAndSlider "Mass (in kg):" (\st -> st.mass) (\v -> UpdateMass v) 25 150
+          , textAndSlider "Weight (in kg):" (\st -> st.mass) (\v -> UpdateMass v) 25 150
           , result
           ]]]]
   where
