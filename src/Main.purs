@@ -44,7 +44,7 @@ render ctx st _ =
   result :: T.Html _
   result =
     T.p'
-      [ T.text " BMI: "
+      [ T.text " Body mass index: "
       , T.text $ show $ round $ bmi st.height st.mass
       ]
 
