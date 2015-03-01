@@ -1,7 +1,6 @@
 module Main (main) where
 
 import Data.Function
-import Data.Maybe
 import Math
 
 import qualified Thermite as T
@@ -30,15 +29,16 @@ bmi heightCm mass = mass / (heightM `pow` 2)
 
 foreign import getValue
   "function getValue(e) {\
-  \  return parseInt(e.target.value);\
+  \  var v = e.target.value;\
+  \  return v.length === 0 ? 0 : parseInt(v);\
   \}" :: T.FormEvent -> Number
 
 render :: T.Render State _ Action
 render ctx st _ =
   T.div'
-  [ result
-  , textAndSlider "Height (in cm)" (\st -> st.height) (\v -> UpdateHeight v) 10 250
-  , textAndSlider "Mass (in kg)" (\st -> st.mass) (\v -> UpdateMass v) 1 300
+  [ textAndSlider "Height (in cm):" (\st -> st.height) (\v -> UpdateHeight v) 10 250
+  , textAndSlider "Mass (in kg):" (\st -> st.mass) (\v -> UpdateMass v) 1 300
+  , result
   ]
   where
   result :: T.Html _
@@ -52,29 +52,25 @@ render ctx st _ =
   textAndSlider name value updateAction sMin sMax =
     T.p'
     [ T.text name
-    , slider value updateAction sMin sMax
-    , textInput value updateAction
+    , T.p' [ textInput value updateAction ]
+    , T.p' [ slider value updateAction sMin sMax ]
     ]
 
   slider :: (State -> Number) -> (Number -> Action) -> Number -> Number -> T.Html _
   slider value updateAction sMin sMax =
-    T.p'
-      [ T.input
-        [ A._type "range"
-        , A.value (show $ value st)
-        , A.min (show sMin)
-        , A.max (show sMax)
-        , T.onChange ctx (\e -> updateAction (getValue e))
-        ] []
-      ]
+    T.input
+    [ A._type "range"
+    , A.value (show $ value st)
+    , A.min (show sMin)
+    , A.max (show sMax)
+    , T.onChange ctx (\e -> updateAction (getValue e))
+    ] []
 
   textInput :: (State -> Number) -> (Number -> Action) -> T.Html _
   textInput value updateAction =
-    T.p'
-      [ T.input [ A.value (show $ value st)
-                , T.onChange ctx (\e -> updateAction (getValue e))
-                ] []
-      ]
+    T.input [ A.value (show $ value st)
+            , T.onChange ctx (\e -> updateAction (getValue e))
+            ] []
 
 performAction :: T.PerformAction _ Action (T.Action _ State)
 performAction _ (UpdateHeight n) = T.modifyState \o -> o { height = n }
